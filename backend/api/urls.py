@@ -1,6 +1,8 @@
 from django.urls import path
-from . import views
+from .views import market_data_view, events_view
 
 urlpatterns = [
-    path('market-data/', views.get_market_data, name='market_data'),
+     # Mounted under /api/ from core/urls.py
+     path('market-data/', market_data_view),
+     path('events/',      events_view),
 ]

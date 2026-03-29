@@ -64,7 +64,7 @@ if __name__ == "__main__":
     # Timeline: Capturing baseline before Nov 2025 through today (March 23, 2026).
     target_ticker = 'BSLI4.SA' 
     
-    brb_data = fetch_and_prep_b3_data(target_ticker, '2025-08-01', '2026-03-23')
+    brb_data = fetch_and_prep_b3_data(target_ticker, '2025-03-01', '2026-03-23')
     
     # Export to a local JSON cache so Django doesn't have to hit yfinance on every request
     output_file = 'brb_market_data.json'
