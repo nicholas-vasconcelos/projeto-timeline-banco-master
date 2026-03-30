@@ -15,8 +15,7 @@
       "sentiment_score": 1,
       "category": "market",
       "timestamp_ms": 1743379200000,
-      "color": "#888780",
-      "manual": true
+      "color": "#888780"
     },
     {
       "date": "2025-04-04",
@@ -30,8 +29,7 @@
       "sentiment_score": -1,
       "category": "market",
       "timestamp_ms": 1743724800000,
-      "color": "#888780",
-      "manual": true
+      "color": "#888780"
     },
     {
       "date": "2025-04-15",
@@ -45,8 +43,7 @@
       "sentiment_score": -1,
       "category": "legal",
       "timestamp_ms": 1744675200000,
-      "color": "#534AB7",
-      "manual": true
+      "color": "#534AB7"
     },
     {
       "date": "2025-06-17",
@@ -60,8 +57,7 @@
       "sentiment_score": 1,
       "category": "regulatory",
       "timestamp_ms": 1750118400000,
-      "color": "#378ADD",
-      "manual": true
+      "color": "#378ADD"
     },
     {
       "date": "2025-07-23",
@@ -75,8 +71,7 @@
       "sentiment_score": 1,
       "category": "market",
       "timestamp_ms": 1753228800000,
-      "color": "#888780",
-      "manual": true
+      "color": "#888780"
     },
     {
       "date": "2025-08-04",
@@ -90,8 +85,7 @@
       "sentiment_score": 1,
       "category": "regulatory",
       "timestamp_ms": 1754265600000,
-      "color": "#378ADD",
-      "manual": true
+      "color": "#378ADD"
     },
     {
       "date": "2025-08-20",
@@ -105,8 +99,7 @@
       "sentiment_score": 0,
       "category": "regulatory",
       "timestamp_ms": 1755648000000,
-      "color": "#378ADD",
-      "manual": true
+      "color": "#378ADD"
     },
     {
       "date": "2025-09-03",
@@ -120,8 +113,7 @@
       "sentiment_score": -1,
       "category": "regulatory",
       "timestamp_ms": 1756857600000,
-      "color": "#378ADD",
-      "manual": true
+      "color": "#378ADD"
     },
     {
       "date": "2025-09-04",
@@ -135,8 +127,7 @@
       "sentiment_score": -1,
       "category": "market",
       "timestamp_ms": 1756944000000,
-      "color": "#888780",
-      "manual": true
+      "color": "#888780"
     },
     {
       "date": "2025-11-05",
@@ -150,8 +141,7 @@
       "sentiment_score": 1,
       "category": "market",
       "timestamp_ms": 1762300800000,
-      "color": "#888780",
-      "manual": true
+      "color": "#888780"
     },
     {
       "date": "2025-11-17",
@@ -165,8 +155,7 @@
       "sentiment_score": -2,
       "category": "arrest",
       "timestamp_ms": 1763337600000,
-      "color": "#E24B4A",
-      "manual": true
+      "color": "#E24B4A"
     },
     {
       "date": "2025-11-18",
@@ -180,8 +169,7 @@
       "sentiment_score": -2,
       "category": "regulatory",
       "timestamp_ms": 1763424000000,
-      "color": "#378ADD",
-      "manual": true
+      "color": "#378ADD"
     },
     {
       "date": "2025-11-25",
@@ -195,8 +183,7 @@
       "sentiment_score": -2,
       "category": "market",
       "timestamp_ms": 1764028800000,
-      "color": "#888780",
-      "manual": true
+      "color": "#888780"
     },
     {
       "date": "2025-12-12",
@@ -210,8 +197,7 @@
       "sentiment_score": -1,
       "category": "legal",
       "timestamp_ms": 1765497600000,
-      "color": "#534AB7",
-      "manual": true
+      "color": "#534AB7"
     },
     {
       "date": "2026-01-14",
@@ -225,8 +211,7 @@
       "sentiment_score": -2,
       "category": "legal",
       "timestamp_ms": 1768348800000,
-      "color": "#534AB7",
-      "manual": true
+      "color": "#534AB7"
     },
     {
       "date": "2026-01-30",
@@ -240,8 +225,7 @@
       "sentiment_score": -1,
       "category": "market",
       "timestamp_ms": 1769731200000,
-      "color": "#888780",
-      "manual": true
+      "color": "#888780"
     },
     {
       "date": "2026-02-06",
@@ -255,8 +239,7 @@
       "sentiment_score": -1,
       "category": "governance",
       "timestamp_ms": 1770336000000,
-      "color": "#B8860B",
-      "manual": true
+      "color": "#B8860B"
     },
     {
       "date": "2026-02-09",
@@ -270,8 +253,7 @@
       "sentiment_score": -2,
       "category": "market",
       "timestamp_ms": 1770595200000,
-      "color": "#888780",
-      "manual": true
+      "color": "#888780"
     },
     {
       "date": "2026-02-15",
@@ -285,8 +267,7 @@
       "sentiment_score": 0,
       "category": "legal",
       "timestamp_ms": 1771113600000,
-      "color": "#534AB7",
-      "manual": true
+      "color": "#534AB7"
     },
     {
       "date": "2026-03-03",
@@ -300,8 +281,7 @@
       "sentiment_score": -2,
       "category": "arrest",
       "timestamp_ms": 1772496000000,
-      "color": "#E24B4A",
-      "manual": true
+      "color": "#E24B4A"
     },
     {
       "date": "2026-03-17",
@@ -315,8 +295,7 @@
       "sentiment_score": -1,
       "category": "governance",
       "timestamp_ms": 1773705600000,
-      "color": "#B8860B",
-      "manual": true
+      "color": "#B8860B"
     }
   ]
 }

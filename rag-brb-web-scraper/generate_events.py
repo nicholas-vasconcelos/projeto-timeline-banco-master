@@ -1,13 +1,3 @@
-"""
-generate_events.py — orchestrator (schema v2, bilingual).
-Runs the RAG query, post-processes results, merges with manually curated
-events, sorts chronologically, deduplicates, and writes output/events.json.
-
-Usage:
-    python generate_events.py              # RAG only
-    python generate_events.py --merge      # RAG + merge with events_manual.json
-    python generate_events.py --manual-only# skip RAG, process manual file only
-"""
 import json
 import argparse
 from pathlib import Path

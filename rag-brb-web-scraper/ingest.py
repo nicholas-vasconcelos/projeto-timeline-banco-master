@@ -1,8 +1,3 @@
-"""
-ingest.py — chunks markdown files in raw_docs/ (and selected JSON files),
-embeds them with nomic-embed-text via Ollama, and stores in a persistent
-ChromaDB. Re-run to add new documents (skips already embedded sources).
-"""
 import json
 from pathlib import Path
 from langchain.text_splitter import RecursiveCharacterTextSplitter

@@ -5,6 +5,8 @@
 ### About the Project
 This repository contains the assets for a **Banco Master stock timeline** developed for the _Data Extraction and Preparation_ course. It combines a Python data pipeline, a lightweight Django API, and a React + Vite dashboard to help investigate how Banco Master's liquidation reverberated through Banco de Brasília (BSLI4.SA) prices.
 
+![alt text](image.png)
+
 ### Architecture at a Glance
  - **`data_pipeline.py`** pulls BSLI4.SA quotes from Yahoo Finance, snaps them to the official B3 (BMF) business calendar, derives 7-day/30-day SMAs and annualized volatility, then exports `brb_market_data.json` to be used in the timeline.
  - **`rag-brb-web-scraper/`** scrapes news (incl. Google News redirects), strips noise, saves cleaned markdown, and ingests both markdown and market-data JSON into a persistent ChromaDB via `ingest.py` (Ollama nomic-embed-text). This is then used by a RAG model (Mistral) to generate `events.json` to be used in the interactive timeline.

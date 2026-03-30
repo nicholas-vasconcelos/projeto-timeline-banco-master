@@ -30,6 +30,17 @@ const CAT_COLOR = {
   fraud:      '#ea580c',
 };
 
+const LINE_OPTIONS = [
+  { key: 'Close',  label: { en: 'BSLI4 Close',    pt: 'Fechamento BSLI4'   }, color: '#0f172a', required: true },
+  { key: 'SMA_7',  label: { en: '7-day SMA',      pt: 'Média móvel 7d'     }, color: '#f59e0b' },
+  { key: 'SMA_30', label: { en: '30-day SMA',     pt: 'Média móvel 30d'    }, color: '#10b981' },
+];
+
+const LINE_VISIBILITY_DEFAULTS = LINE_OPTIONS.reduce((acc, option) => {
+  if (!option.required) acc[option.key] = true;
+  return acc;
+}, {});
+
 // ── Theme tokens ─────────────────────────────────────────────────────────────
 const T = {
   light: {
@@ -261,6 +272,7 @@ export default function App() {
   const [tableOpen,    setTableOpen]    = useState(false);
   const [loading,      setLoading]      = useState(true);
   const [error,        setError]        = useState(null);
+  const [lineVisibility, setLineVisibility] = useState(() => ({ ...LINE_VISIBILITY_DEFAULTS }));
 
   const t = T[dark ? 'dark' : 'light'];
 
@@ -302,6 +314,9 @@ export default function App() {
     setHoverEvent(null);
   }, []);
   const handleRowLeave   = useCallback(() => { if (!lockedEvent) setHoverEvent(null); }, [lockedEvent]);
+  const toggleLineVisibility = useCallback(key => {
+    setLineVisibility(prev => ({ ...prev, [key]: !prev[key] }));
+  }, []);
 
   const visibleEvents = filter === 'all' ? events : events.filter(e => e.category === filter);
   const eventDates    = new Set(visibleEvents.map(e => e.date));
@@ -397,9 +412,49 @@ export default function App() {
 
         {/* ── Chart — full width ── */}
         <div className={`rounded-xl border p-4 md:p-6 ${t.surface} ${t.border}`}>
-          <div style={{ height: 520 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <ComposedChart data={marketData} margin={{ top: 16, right: 20, left: 0, bottom: 8 }}>
+          <div className="flex flex-col lg:flex-row gap-6">
+            <div className="lg:w-60">
+              <div className={`rounded-xl border p-4 h-full ${t.border} ${t.surface}`}>
+                <div className={`text-xs font-semibold uppercase tracking-wider mb-3 ${t.textFaint}`}>
+                  {lang === 'en' ? 'Lines' : 'Linhas'}
+                </div>
+                <div className="flex flex-col gap-2">
+                  {LINE_OPTIONS.map(option => {
+                    const isActive = option.required || lineVisibility[option.key];
+                    const status = option.required
+                      ? (lang === 'en' ? 'Visible' : 'Ativo')
+                      : isActive
+                        ? (lang === 'en' ? 'Visible' : 'Visível')
+                        : (lang === 'en' ? 'Hidden' : 'Oculta');
+                    return (
+                      <button
+                        key={option.key}
+                        type="button"
+                        disabled={option.required}
+                        aria-pressed={isActive}
+                        onClick={() => { if (!option.required) toggleLineVisibility(option.key); }}
+                        className={`flex items-center justify-between gap-3 px-3 py-2 rounded-lg border text-left transition ${t.border} ${t.surfaceHov} ${option.required ? 'cursor-default' : ''} ${isActive ? '' : 'opacity-60'}`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: option.color }} />
+                          <span className={`text-xs font-medium ${t.text}`}>
+                            {option.label[lang]}
+                          </span>
+                        </div>
+                        <span className="text-[10px] font-semibold uppercase tracking-wide" style={{ color: isActive ? '#16a34a' : '#9ca3af' }}>
+                          {status}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex-1">
+              <div style={{ height: 520 }}>
+                <ResponsiveContainer width="100%" height="100%">
+                  <ComposedChart data={marketData} margin={{ top: 16, right: 20, left: 0, bottom: 8 }}>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={t.gridStroke} />
 
                 <XAxis dataKey="Date" minTickGap={50}
@@ -427,19 +482,24 @@ export default function App() {
                   {marketData.map((entry, i) => <Cell key={i} fill={volColor(entry)} />)}
                 </Bar>
 
-                {/* Event reference lines */}
+                {/* Event reference lines (pointer events disabled to keep dots clickable) */}
                 {visibleEvents.map(ev => (
                   <ReferenceLine key={ev.date} yAxisId="price" x={ev.date}
                     stroke={CAT_COLOR[ev.category] || '#94a3b8'}
                     strokeWidth={activeDate === ev.date ? 2 : 1}
                     strokeDasharray="4 3"
-                    opacity={activeDate === ev.date ? 0.85 : 0.3} />
+                    opacity={activeDate === ev.date ? 0.85 : 0.3}
+                    style={{ pointerEvents: 'none' }} />
                 ))}
 
-                <Line yAxisId="price" type="monotone" dataKey="SMA_30" name="SMA 30"
-                  stroke="#10b981" strokeWidth={1.5} dot={false} strokeDasharray="6 3" opacity={0.8} />
-                <Line yAxisId="price" type="monotone" dataKey="SMA_7" name="SMA 7"
-                  stroke="#f59e0b" strokeWidth={1.5} dot={false} strokeDasharray="3 3" opacity={0.8} />
+                {lineVisibility.SMA_30 && (
+                  <Line yAxisId="price" type="monotone" dataKey="SMA_30" name="SMA 30"
+                    stroke="#10b981" strokeWidth={1.5} dot={false} strokeDasharray="6 3" opacity={0.8} />
+                )}
+                {lineVisibility.SMA_7 && (
+                  <Line yAxisId="price" type="monotone" dataKey="SMA_7" name="SMA 7"
+                    stroke="#f59e0b" strokeWidth={1.5} dot={false} strokeDasharray="3 3" opacity={0.8} />
+                )}
 
                 {/* Price line with event dots */}
                 <Line yAxisId="price" type="monotone" dataKey="Close"
@@ -476,6 +536,8 @@ export default function App() {
             ))}
             <div className={`text-xs ml-auto italic ${t.textFaint}`}>
               {lang === 'en' ? 'Click a marker to pin details' : 'Clique num marcador para fixar'}
+            </div>
+          </div>
             </div>
           </div>
         </div>

@@ -1,15 +1,9 @@
-"""
-query.py — RAG query engine.
-Retrieves relevant chunks from ChromaDB, passes them to Mistral 7B
-via Ollama, and extracts structured timeline events as JSON.
-"""
 import json
 import re
 from pathlib import Path
 from langchain_chroma import Chroma
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain_community.llms import Ollama
-from langchain.prompts import PromptTemplate
 
 CHROMA_PATH = Path(__file__).parent / "chroma_db"
 

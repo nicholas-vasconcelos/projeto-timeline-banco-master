@@ -1,17 +1,3 @@
-"""
-harvest_urls.py — Automated URL harvester for the BRB RAG pipeline.
-
-Reads your stock JSON, detects price/volume spikes, searches Google News
-for each spike date, filters results for quality, and writes urls.txt.
-
-No API key needed — uses Google News RSS + direct search scraping.
-
-Usage:
-    python harvest_urls.py                          # detect spikes + search
-    python harvest_urls.py --threshold 5.0          # custom % threshold (default 5%)
-    python harvest_urls.py --json path/to/data.json # custom data file
-    python harvest_urls.py --dry-run                # show queries, don't fetch
-"""
 import json
 import re
 import time
