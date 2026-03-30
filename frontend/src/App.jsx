@@ -284,8 +284,8 @@ export default function App() {
     (async () => {
       try {
         const [mktRes, evtRes] = await Promise.all([
-          fetch('http://127.0.0.1:8000/api/market-data/'),
-          fetch('http://127.0.0.1:8000/api/events/'),
+          fetch('/brb_market_data.json'),
+          fetch('/events.json'),
         ]);
         if (!mktRes.ok) throw new Error(`Market data API error ${mktRes.status}`);
         if (!evtRes.ok) throw new Error(`Events API error ${evtRes.status}`);
